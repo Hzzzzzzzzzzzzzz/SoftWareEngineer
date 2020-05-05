@@ -14,8 +14,8 @@
   </head>
   <body>
   <table border="1">
-    <tr><th>GetUserPwd</th><th>INSERT</th><th>GetUserData</th><th>DELETE</th><th>ALTER</th><th>GetEngineerData</th></tr>
-    <tr><th>111</th><th>222</th><th>213</th><th>333</th><th>444</th><th>555</th></tr>
+    <tr><th>GetUserPwd</th><th>INSERT</th><th>GetUserData</th><th>DELETE</th><th>UPDATA</th><th>GetEngineerData</th><th>GetAllInformation</th></tr>
+    <tr><th>111</th><th>222</th><th>213</th><th>333</th><th>444</th><th>555</th><th>666</th></tr>
   </table>
   <br>
   <form action="" method="post">
@@ -31,13 +31,13 @@
       </div>
     </div>
     <div>
-      <br><label><b>INSERT:</b></label>
+      <br><label><b>INSERT OR UPDATA:</b></label>
       <div style="margin-inline-start: 20px">
         <table border="1" style="margin-top: 20px">
           <tr><th>用户</th><th>工程师</th><th>mapping</th></tr>
           <tr><th>1</th><th>2</th><th>3</th></tr>
         </table>
-        <br><label>选择插入的类型: <input type="text" id="insert_type"></label>
+        <br><label>选择插入或者查找或者修改的类型: <input type="text" id="insert_type"></label>
         <div>
           <br>
           <label><b>用户:</b></label>
@@ -69,6 +69,10 @@
           <div style="margin-left: 20px">
             <label>engineer_id:<input type="text" id="engineer_id"></label>
             <label>user_id:<input type="text" id="user_id"></label>
+            <br><br>
+            <label style="margin-right: 20px">一次只能输入一个:</label>
+            <label>update_engineer_id:<input type="text" id="update_engineer_id"></label>
+            <label>update_user_id:<input type="text" id="update_user_id"></label>
           </div>
         </div>
       </div>

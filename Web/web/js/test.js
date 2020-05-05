@@ -5,7 +5,7 @@ $(document).ready(
             ajaxObj = $.ajax({
                 type:"get",
                 contentType: "application/json;charset=UTF-8",
-                url:"service",
+                url:"http://193.112.176.224:8080/Web_war/service",
                 async:true,
                 data:{
                     "condition":$("#condition").val(),
@@ -28,13 +28,17 @@ $(document).ready(
                     "engineer_id":$("#engineer_id").val(),
                     "user_id":$("#user_id").val(),
                     "insert_type":$("#insert_type").val(),
+                    "update_user_id":$("#update_user_id").val(),
+                    "update_engineer_id":$("#update_engineer_id").val(),
                 },
                 success:function () {
                     $("#result").html(ajaxObj.responseText);
                     $("input[type='text']").val("");
                 },
                 error:function () {
-                    alert("error");
+                    // alert("error");
+                    $("#result").html(ajaxObj.responseText);
+                    $("input[type='text']").val("");
                 }
             });
         });

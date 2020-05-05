@@ -5,7 +5,7 @@ public class DBUtils {
     private static final String DBNAME = "webservice";//数据库名
     private static final String DBURL = "jdbc:mysql://localhost:3306/" + DBNAME+"?useSSL=false";//连接URL
     private static final String DBUSER = "root";//数据库用户名
-    private static final String DBPASSWORD = "88888888";//数据库密码
+    private static final String DBPASSWORD = "@abcD123456";//数据库密码
     private static Connection conn = null;
     private static PreparedStatement ps = null;
     private static ResultSet rs = null;
