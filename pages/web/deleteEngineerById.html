@@ -22,7 +22,8 @@
     </script>
 
     <script type="text/javascript" src="./js/jquery-3.4.1.min.js"></script>
-    <script type="text/javascript" src="./js/add&deleteEngineer.js"></script>
+    <script src="//cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+    <script type="text/javascript" src="js/add&delete.js"></script>
 
     <link rel="stylesheet" type="text/css" href="stylesheets/theme.css">
     <link rel="stylesheet" type="text/css" href="stylesheets/premium.css">
@@ -50,7 +51,7 @@
     function checkengineer_id(engineer_id) {
         var usernameMsg = document.getElementById("engineer_idMsg");
         var length = engineer_id.value.length;
-        if(length < 1 || length > 4) {
+        if(length < 1 ) {
             usernameMsg.innerText = "请输入正确的id!";
         } else {
             usernameMsg.innerText = "";
@@ -101,12 +102,12 @@
         <ul id="main-menu" class="nav navbar-nav navbar-right">
             <li class="dropdown hidden-xs">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                    <span class="glyphicon glyphicon-user padding-right-small" style="position:relative;top: 3px;"></span> Jack Smith
+                    <span class="glyphicon glyphicon-user padding-right-small" style="position:relative;top: 3px;"></span> <div id="n_r" class="sty"> </div> <style>.sty{display: inline-block;}</style>
                     <i class="fa fa-caret-down"></i>
                 </a>
 
                 <ul class="dropdown-menu">
-                    <li><a tabindex="-1" href="sign-in.html">退出登录</a></li>
+                    <li><a tabindex="-1" href="loginUser.html">退出登录</a></li>
                 </ul>
             </li>
         </ul>
@@ -123,7 +124,7 @@
         <li>
             <ul class="delete-menu nav nav-list collapse">
                 <li ><a href="deleteEngineerById.html"><span class="fa fa-caret-right"></span> 按编号删除</a></li>
-                <li ><a href="deleteEngineerByName.html"><span class="fa fa-caret-right"></span> 按姓名删除</a></li>
+                <li ><a href="deleteEngineerByName.html"><span class="fa fa-caret-right"></span> 按用户名删除</a></li>
             </ul>
         </li>
         <li><a href="#" data-target=".alter-menu" class="nav-header collapsed" data-toggle="collapse">
@@ -146,7 +147,6 @@
         <li><a href="sortEngineer.html" class="nav-header"><i class="fa fa-fw fa-circle"></i> 对工程师资料进行排序</a></li>
         <li><a href="clearAllEngineer.html" class="nav-header"><i class="fa fa-fw fa-circle"></i> 清空所有工程师资料</a></li>
         <li><a href="printEngineerInfo.html" class="nav-header"><i class="fa fa-fw fa-circle"></i> 打印工程师资料信息报表</a></li>
-        <li><a href="retrieveEngineer.html" class="nav-header"><i class="fa fa-fw fa-circle"></i> 重新取工程师信息</a></li>
     </ul>
 </div>
 
@@ -164,12 +164,13 @@
                         <form id="tab" action="" method="post">
                             <div class="form-group">
                                 <label>编号</label>
-                                <input type="text" value="" class="form-control" id="engineer_id" onblur="checkengineer_id(this)"/>
+                                <input type="text" value="" class="form-control" id="engineer_id" onblur="checkengineer_id(this)"
+                                       oninput = "value=value.replace(/[^\d]/g,'')" maxlength="4"/>
                                 <a color="red" id="engineer_idMsg"></a>
 
                                 <input type="hidden" id="engineer_name">
                                 <input type="hidden" value="777" id="condition">
-                                <input type="hidden" value="" id="insert_type">
+                                <input type="hidden" value="2" id="insert_type">
                                 <input type="hidden" id="user_id">
                                 <input type="hidden" id="user_name">
                             </div>
@@ -177,7 +178,7 @@
                     </div>
                 </div>
                 <div class="btn-toolbar list-toolbar">
-                    <button class="btn btn-danger"  id="_button">删除</button>
+                    <button class="btn btn-danger"  id="buttondelete">删除</button>
                 </div>
             </div>
         </div>

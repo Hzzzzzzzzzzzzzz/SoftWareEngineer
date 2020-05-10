@@ -18,7 +18,7 @@ $(document).ready(
                     "userName":$("#username").val(),
                 },
                 success:function () {
-                    if(ajaxObj.responseText == "error : java.sql.SQLException: Illegal operation on empty result set."){
+                    if((ajaxObj.responseText).substring(0,5) == "error"){
                         alert("该用户名不存在！");
                         return;
                     }

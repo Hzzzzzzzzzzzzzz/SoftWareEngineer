@@ -1,6 +1,8 @@
 $(document).ready(
     function () {
-        // var condition = $("condition").text;
+        var body=window.document.getElementById("n_r");
+        body.innerHTML = $.cookie('u_name');
+
         $("#btn_SearchByName").click(function () {
             var engineer_name = $("#engineer_name").val();
             var tbody=window.document.getElementById("tbody-result");
@@ -29,7 +31,7 @@ $(document).ready(
                     "salary":$("#salary").val(),
                     "education":$("#education").val(),
                     "engineer_id":$("#engineer_id").val(),
-                    "user_id":$("#user_id").val(),
+                    "user_id":$.cookie('u_id'),
                     "update_user_id":$("#update_user_id").val(),
                     "update_engineer_id":$("#update_engineer_id").val(),
                 },
@@ -40,12 +42,16 @@ $(document).ready(
                     else if (!$.trim(engineer_name)){
                         alert("输入不得为空格！")
                     }
+                    else if (ajaxObj.responseText == "error: 该工程师不存在或者该工程师不隶属于该用户"){
+                        alert("该工程师不存在或者该工程师不隶属于该用户！");
+                        return;
+                    }
                     else{
                         var str = "";
                         var json = eval("("+ajaxObj.responseText+")");
-                        if(json!="") {
-                            for(i in json) {
-                                //alert(ajaxObj.responseText);
+                        for(i in json) {
+                            //alert(ajaxObj.responseText);
+                            if ($("#engineer_name").val() == json[i].name) {
                                 str += "<tr>" +
                                     "<td>" + json[i].engineer_id + "</td>" +
                                     "<td>" + json[i].name + "</td>" +
@@ -60,9 +66,6 @@ $(document).ready(
                                     "</tr>";
                                 tbody.innerHTML = str;
                             }
-                        }
-                        else{
-                            alert("查询没有结果！");
                         }
                     }
                 },
