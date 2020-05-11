@@ -6,7 +6,7 @@ $(document).ready(
         // var condition = $("condition").text;
         $("#alterU").click(function () {
 
-            if ($("#user_id").val() == "") {
+            if ($("#userName").val() == "") {
                 alert("输入不能为空");
                 return;
             }
@@ -18,8 +18,7 @@ $(document).ready(
                 async:true,
                 data:{
                     "condition":"213",
-                    "user_id":$("#user_id").val(),
-                    "userName":"",
+                    "userName":$("#userName").val(),
                 },
                 success:function () {
                     if ((ajaxObj.responseText).substring(0,5) == "error"){
@@ -94,7 +93,7 @@ $(document).ready(
                 },
                 success:function () {
                     if ((ajaxObj.responseText).substring(0,5) == "error"){
-                        alert("修改失败，请重试！");
+                        alert("此用户名已存在，请换一个！");
                     } else {
                         alert("修改成功！");
                     }
