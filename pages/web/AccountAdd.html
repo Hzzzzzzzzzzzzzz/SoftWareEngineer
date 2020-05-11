@@ -104,8 +104,9 @@
     }
     function checkuser_sex(user_sex) {
         var user_sexMsg = document.getElementById("user_sexMsg");
-        if(pattern.test(birthday.value)==false) {
-            user_sexMsg.innerText = "性别不为空！";
+        var length = user_sex.value.length;
+        if(length < 1) {
+            user_sexMsg.innerText = "性别不为空!";
         } else {
             user_sexMsg.innerText = "";
         }
@@ -194,7 +195,7 @@
         <li>
             <ul class="query-menu nav nav-list collapse">
                 <li ><a href="AccountQueryID.html"><span class="fa fa-caret-right"></span> 按编号查询</a></li>
-                <li ><a href="AccountQueryName.html"><span class="fa fa-caret-right"></span> 按姓名查询</a></li>
+                <li ><a href="AccountQueryName.html"><span class="fa fa-caret-right"></span> 按用户名查询</a></li>
             </ul>
         </li>
         <li><a href="AccountList.html" class="nav-header"><i class="fa fa-fw fa-recycle"></i> 用户列表</a></li>

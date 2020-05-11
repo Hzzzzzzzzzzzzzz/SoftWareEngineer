@@ -49,8 +49,14 @@ $(document).ready(
             }else if(workingYears == ""){
                 alert("工龄不能为空");
                 return;
-            }else if(salary == ""){
+            } else if ( workingYears<0 || workingYears>50 ){
+                alert("工龄范围需在0-50");
+                return;
+            } else if(salary == ""){
                 alert("薪水不能为空");
+                return;
+            }else if(salary == "0"){
+                alert("薪水不能为0");
                 return;
             }
             ajaxObj = $.ajax({

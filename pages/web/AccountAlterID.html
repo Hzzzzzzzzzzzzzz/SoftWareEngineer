@@ -12,8 +12,6 @@
     <link rel="stylesheet" type="text/css" href="lib/bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="lib/font-awesome/css/font-awesome.css">
 
-    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-
     <script src="lib/jquery-1.11.1.min.js" type="text/javascript"></script>
 
     <script src="lib/jQuery-Knob/js/jquery.knob.js" type="text/javascript"></script>
@@ -23,13 +21,11 @@
         });
     </script>
 
+    <script type="text/javascript" src="./js/alterUByID.js"></script>
 
     <link rel="stylesheet" type="text/css" href="stylesheets/theme.css">
     <link rel="stylesheet" type="text/css" href="stylesheets/premium.css">
 
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <script src="//cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
-    <script type="text/javascript" src="./js/AccountQueryName.js"></script>
 </head>
 <body class=" theme-blue">
 
@@ -50,6 +46,47 @@
 
     });
 </script>
+
+<script type="text/javascript">
+    function checkusername(username) {
+        var usernameMsg = document.getElementById("usernameMsg");
+        var length = username.value.length;
+        if(length < 1) {
+            usernameMsg.innerText = "用户名长度不超过20位,且不为空!";
+        } else {
+            usernameMsg.innerText = "";
+        }
+    }
+    function checkpassword(password) {
+        var passwordMsg = document.getElementById("passwordMsg");
+        var length = password.value.length;
+        if(length < 1) {
+            passwordMsg.innerText = "密码长度不超过10位,且不为空!";
+        } else {
+            passwordMsg.innerText = "";
+        }
+    }
+    function checkuser_name(user_name) {
+        var user_nameMsg = document.getElementById("user_nameMsg");
+        var length = user_name.value.length;
+        if(length < 1) {
+            user_nameMsg.innerText = "姓名长度不超过10位,且不为空!";
+        } else {
+            user_nameMsg.innerText = "";
+        }
+    }
+    function checkuser_sex(user_sex) {
+        var user_sexMsg = document.getElementById("user_sexMsg");
+        var length = user_sex.value.length;
+        if(length < 1) {
+            user_sexMsg.innerText = "性别不为空!";
+        } else {
+            user_sexMsg.innerText = "";
+        }
+    }
+
+</script>
+
 <style type="text/css">
     #line-chart {
         height:300px;
@@ -144,19 +181,19 @@
         <li>
             <ul class="query-menu nav nav-list collapse">
                 <li ><a href="AccountQueryID.html"><span class="fa fa-caret-right"></span> 按编号查询</a></li>
-                <li ><a href="AccountQueryName.html"><span class="fa fa-caret-right"></span> 按用户名查询</a></li>
+                <li ><a href="AccountQueryName.html"><span class="fa fa-caret-right"></span> 按姓名查询</a></li>
             </ul>
         </li>
         <li><a href="AccountList.html" class="nav-header"><i class="fa fa-fw fa-recycle"></i> 用户列表</a></li>
+        <li><a href="AccountEngineerList.html" class="nav-header"><i class="fa fa-fw fa-recycle"></i> 工程师列表</a></li>
     </ul>
 </div>
 
 <div class="content">
     <div class="header">
-        <h1 class="page-title">查询指定用户名资料</h1>
+        <h1 class="page-title">修改指定编号用户资料</h1>
     </div>
     <div class="main-content">
-
         <div class="row">
             <div class="col-md-4">
                 <br>
@@ -164,44 +201,40 @@
                     <div class="tab-pane active in" id="home">
                         <form id="tab">
                             <div class="form-group">
-                                <label>用户名</label>
-                                <input type="text" value="" class="form-control" id="username">
-                                <input type="hidden" id="user_id">
-                                <input type="hidden" id="user_name">
+                                <label>编号</label>
+                                <input id="user_id" type="text" value="" class="form-control">
                             </div>
                         </form>
                     </div>
+
+                    <div class="tab-pane fade" id="profile">
+
                 </div>
 
                 <div class="btn-toolbar list-toolbar">
                     <br>
-                    <button class="btn btn-primary" id="btn_SearchByName"><i class="fa fa-book"></i> 查询</button>
+                    <button id="alterU" class="btn btn-default"><i class="fa fa-pencil"></i> 修改</button>
+                    <!--a href="#myModal" data-toggle="modal" class="btn btn-danger">Delete</a-->
                 </div>
             </div>
         </div>
-
-        <table class="table" id="table-result">
-            <thead>
-            <tr>
-                <th>编号</th>
-                <th>用户名</th>
-                <th>密码</th>
-                <th>姓名</th>
-                <th>性别</th>
-                <th style="width: 3.5em;"></th>
-            </tr>
-            </thead>
-
-            <tbody id="tbody-result"></tbody>
-        </table>
-
-        <footer>
-            <hr>
-            <!-- Purchase a site license to remove this link from the footer: http://www.portnine.com/bootstrap-themes -->
-            <p class="pull-right">A <a href="https://www.zafu.edu.cn/" target="_blank">Website</a> by <a href="https://www.zafu.edu.cn/" target="_blank">173</a></p>
-            <p>© 2020 <a href="https://www.zafu.edu.cn/" target="_blank">ZAFU</a></p>
-        </footer>
     </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <span id="alter_r">
+                </span>
+            </div>
+        </div>
+
+</div>
+
+    <footer>
+        <hr>
+        <!-- Purchase a site license to remove this link from the footer: http://www.portnine.com/bootstrap-themes -->
+        <p class="pull-right">A <a href="https://www.zafu.edu.cn/" target="_blank">Website</a> by <a href="https://www.zafu.edu.cn/" target="_blank">173</a></p>
+        <p>© 2020 <a href="https://www.zafu.edu.cn/" target="_blank">ZAFU</a></p>
+    </footer>
 </div>
 
 

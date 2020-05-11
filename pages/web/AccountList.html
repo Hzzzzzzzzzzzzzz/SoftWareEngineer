@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="en"><head>
     <meta charset="utf-8">
@@ -12,24 +11,15 @@
     <link rel="stylesheet" type="text/css" href="lib/bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="lib/font-awesome/css/font-awesome.css">
 
-    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-
     <script src="lib/jquery-1.11.1.min.js" type="text/javascript"></script>
 
-    <script src="lib/jQuery-Knob/js/jquery.knob.js" type="text/javascript"></script>
-    <script type="text/javascript">
-        $(function() {
-            $(".knob").knob();
-        });
-    </script>
-
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="//cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+    <script type="text/javascript" src="./js/AccountList.js"></script>
 
     <link rel="stylesheet" type="text/css" href="stylesheets/theme.css">
     <link rel="stylesheet" type="text/css" href="stylesheets/premium.css">
 
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <script src="//cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
-    <script type="text/javascript" src="./js/AccountQueryName.js"></script>
 </head>
 <body class=" theme-blue">
 
@@ -144,43 +134,27 @@
         <li>
             <ul class="query-menu nav nav-list collapse">
                 <li ><a href="AccountQueryID.html"><span class="fa fa-caret-right"></span> 按编号查询</a></li>
-                <li ><a href="AccountQueryName.html"><span class="fa fa-caret-right"></span> 按用户名查询</a></li>
+                <li ><a href="AccountQueryName.html"><span class="fa fa-caret-right"></span> 按姓名查询</a></li>
             </ul>
         </li>
         <li><a href="AccountList.html" class="nav-header"><i class="fa fa-fw fa-recycle"></i> 用户列表</a></li>
+        <li><a href="AccountEngineerList.html" class="nav-header"><i class="fa fa-fw fa-recycle"></i> 工程师列表</a></li>
     </ul>
 </div>
 
 <div class="content">
     <div class="header">
-        <h1 class="page-title">查询指定用户名资料</h1>
+        <h1 class="page-title">用户资料</h1>
     </div>
     <div class="main-content">
 
-        <div class="row">
-            <div class="col-md-4">
-                <br>
-                <div id="myTabContent" class="tab-content">
-                    <div class="tab-pane active in" id="home">
-                        <form id="tab">
-                            <div class="form-group">
-                                <label>用户名</label>
-                                <input type="text" value="" class="form-control" id="username">
-                                <input type="hidden" id="user_id">
-                                <input type="hidden" id="user_name">
-                            </div>
-                        </form>
-                    </div>
-                </div>
-
-                <div class="btn-toolbar list-toolbar">
-                    <br>
-                    <button class="btn btn-primary" id="btn_SearchByName"><i class="fa fa-book"></i> 查询</button>
-                </div>
+        <div class="btn-toolbar list-toolbar">
+            <button class="btn btn-default"><a href="AccountAdd.html"><i style=""class="fa fa-plus"></i> 添加用户</a></button>
+            <button class="btn btn-default" id="btn_showAllUser"><i style=""class="fa fa-plus"></i> 显示所有用户</button>
+            <div class="btn-group">
             </div>
         </div>
-
-        <table class="table" id="table-result">
+        <table class="table">
             <thead>
             <tr>
                 <th>编号</th>
@@ -191,7 +165,6 @@
                 <th style="width: 3.5em;"></th>
             </tr>
             </thead>
-
             <tbody id="tbody-result"></tbody>
         </table>
 
@@ -212,6 +185,5 @@
         $('.demo-cancel-click').click(function(){return false;});
     });
 </script>
-
 
 </body></html>

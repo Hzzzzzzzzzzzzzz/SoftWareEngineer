@@ -11,6 +11,11 @@ $(document).ready(
         // var condition = $("condition").text;
         $("#commit_id").click(function () {
 
+            if ($("#engineer_id").val() == ""){
+                alert("输入不能为空！");
+                return;
+            }
+
             ajaxObj = $.ajax({
                 type:"get",
                 contentType: "application/json;charset=UTF-8",
@@ -36,6 +41,11 @@ $(document).ready(
                     if(json!="") {
                         str = ["                        <form id=\"tab\" action=\"\" method=\"post\" >",
                             "                            <div class=\"form-group\">",
+                            "                                <label>编号</label>",
+                            "                                <input disabled='disabled' type=\"text\" value=" + json[0].engineer_id + " class=\"form-control\" id=\"nengineer_id\"/>",
+                            "                                <a color=\"red\" id=\"engineer_engineer_idMsg\"></a>",
+                            "                            </div>",
+                            "                            <div class=\"form-group\">",
                             "                                <label>姓名</label>",
                             "                                <input type=\"text\" value=" + json[0].name + " class=\"form-control\" id=\"engineer_name\" onblur=\"checkengineer_name(this)\"",
                             "                                       oninput = \"value=value.replace(/[^\/\/u4e00-\/\/u9fa5_a-zA-Z0-9]/g,\'\')\" maxlength=\"20\"/>",
@@ -56,13 +66,13 @@ $(document).ready(
                             "                            <div class=\"form-group\">",
                             "                                <label>电话</label>",
                             "                                <input type=\"text\" value=" + json[0].mobile + " class=\"form-control\" id=\"mobile\" onblur=\"checkmobile(this)\"",
-                            "                                       oninput = \"value=value.replace(/[^\\d]/g,\'\')\" maxlength=\"11\"/>",
+                            "                                       oninput = \"value=value.replace(/[^\\d]/g,\'\')\" maxlength=\"15\"/>",
                             "                                <a color=\"red\" id=\"mobileMsg\"></a>",
                             "                            </div>",
                             "                            <div class=\"form-group\">",
                             "                                <label>地址</label>",
                             "                                <input type=\"text\" value=" + json[0].address + " class=\"form-control\" id=\"address\" onblur=\"checkaddress(this)\"",
-                            "                                       oninput = \"value=value.replace(/[^\/\/u4e00-\/\/u9fa5_a-zA-Z0-9]/g,\'\')\" maxlength=\"40\"/>",
+                            "                                       oninput = \"value=value.replace(/[^\/\/u4e00-\/\/u9fa5_a-zA-Z0-9]/g,\'\')\" maxlength=\"30\"/>",
                             "                                <a color=\"red\" id=\"addressMsg\"></a>",
                             "                            </div>",
                             "                            <div class=\"form-group\">",
@@ -118,8 +128,18 @@ $(document).ready(
 
             if ($("#engineer_name").val() == "" || $("#engineer_sex").val() == "" || $("#mobile").val() == "" || $("#birthday").val() == "" ||
                 $("#address").val() == "" || $("#nativeplace").val() == "" || $("#workingYears").val() == "" || $("#salary").val() == "" ||
-                $("#engineer_id").val() == "" || $("#user_id").val() == "") {
+                $("#nengineer_id").val() == "" || $("#user_id").val() == "") {
                 alert("不允许有字段为空");
+                return;
+            }
+
+            if ($("#workingYears").val() < 0 || $("#workingYears").val() > 50){
+                alert("工龄范围需在0-50");
+                return;
+            }
+
+            if ($("#salary").val() == "0"){
+                alert("薪水不能为0");
                 return;
             }
 
@@ -140,7 +160,7 @@ $(document).ready(
                     "workingYears":$("#workingYears").val(),
                     "salary":$("#salary").val(),
                     "education":$("#education").val(),
-                    "engineer_id":$("#engineer_id").val(),
+                    "engineer_id":$("#nengineer_id").val(),
                     "user_id":$("#user_id").val(),
                 },
                 success:function () {

@@ -2,7 +2,7 @@
 <!doctype html>
 <html lang="en"><head>
     <meta charset="utf-8">
-    <title>Bootstrap Admin</title>
+    <title>人事部系统</title>
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
@@ -21,15 +21,26 @@
         });
     </script>
 
-    <script type="text/javascript" src="./js/jquery-3.4.1.min.js"></script>
-    <script type="text/javascript" src="./js/add&deleteEngineer.js"></script>
+    <script src="//cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+    <script type="text/javascript" src="./js/deleteEngineerByName.js"></script>
 
     <link rel="stylesheet" type="text/css" href="stylesheets/theme.css">
     <link rel="stylesheet" type="text/css" href="stylesheets/premium.css">
-
+    <script type="text/javascript">
+        function checkengineer_name(engineer_name) {
+            var engineer_nameMsg = document.getElementById("engineer_nameMsg");
+            var length = engineer_name.value.length;
+            if(length < 1) {
+                engineer_nameMsg.innerText = "姓名长度不超过20位,且不为空!";
+            } else {
+                engineer_nameMsg.innerText = "";
+            }
+        }
+    </script>
 </head>
-
 <body class=" theme-blue">
+
+<!-- Demo page code -->
 
 <script type="text/javascript">
     $(function() {
@@ -65,17 +76,19 @@
         $('#main-menu').append(uls.clone());
     });
 </script>
-<script type="text/javascript">
-    function checkengineer_name(engineer_name) {
-    var engineer_nameMsg = document.getElementById("engineer_nameMsg");
-    var length = engineer_name.value.length;
-    if(length < 1 || length > 4) {
-        engineer_nameMsg.innerText = "请输入正确的姓名!";
-    } else {
-        engineer_nameMsg.innerText = "";
-    }
-}
-</script>
+
+<!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+<!--[if lt IE 9]>
+<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+<!-- Le fav and touch icons -->
+<link rel="shortcut icon" href="../assets/ico/favicon.ico">
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
+<link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
+
 
 <!--[if lt IE 7 ]> <body class="ie ie6"> <![endif]-->
 <!--[if IE 7 ]> <body class="ie ie7 "> <![endif]-->
@@ -99,12 +112,12 @@
         <ul id="main-menu" class="nav navbar-nav navbar-right">
             <li class="dropdown hidden-xs">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                    <span class="glyphicon glyphicon-user padding-right-small" style="position:relative;top: 3px;"></span> Jack Smith
+                    <span class="glyphicon glyphicon-user padding-right-small" style="position:relative;top: 3px;"></span> <div id="n_r" class="sty"> </div> <style>.sty{display: inline-block;}</style>
                     <i class="fa fa-caret-down"></i>
                 </a>
 
                 <ul class="dropdown-menu">
-                    <li><a tabindex="-1" href="sign-in.html">退出登录</a></li>
+                    <li><a tabindex="-1" href="loginUser.html">退出登录</a></li>
                 </ul>
             </li>
         </ul>
@@ -148,36 +161,58 @@
         <li><a href="printEngineerInfo.html" class="nav-header"><i class="fa fa-fw fa-circle"></i> 打印工程师资料信息报表</a></li>
     </ul>
 </div>
+
 <div class="content">
     <div class="header">
         <h1 class="page-title">删除指定工程师资料</h1>
     </div>
     <div class="main-content">
+
         <div class="row">
             <div class="col-md-4">
                 <br>
                 <div id="myTabContent" class="tab-content">
-                    <div class="tab-pane active in" id="home">
-                        <form action="" method="post">
-                            <div class="form-group">
-                                <input type="hidden" value="777" id="condition">
-                                <input type="hidden" id="user_name">
-                                <input type="hidden" id="engineer_id">
-                                <input type="hidden" id="user_id">
-                                <label>姓名</label>
-                                <input type="text" value="" class="form-control" id="engineer_name" onblur="checkengineer_name(this)"/>
-                                <a color="red" id="engineer_nameMsg"></a>
-                            </div>
-
-                        </form>
+                    <div class="form-group">
+                        <label>姓名</label>
+                        <input class="form-control" id="engineer_name" onblur="checkengineer_name(this)"
+                               oninput = "value=value.replace(/[^\u4e00-\u9fa5_a-zA-Z0-9]/g,'')" maxlength="20"/>
+                        <a color="red" id="engineer_nameMsg"></a>
                     </div>
                 </div>
-                <div class="btn-toolbar list-toolbar">
-                    <button class="btn btn-danger"  id="_button">删除</button>
+
+                <div class="btn-toolbar list-toolbar"href="alterEngineerContent.html" >
+                    <button class="btn btn-primary"  id="alter1" > 确认(重新获取工程师信息)</button>
                 </div>
-                <p id="result"></p>
             </div>
         </div>
+
+        <table class="table" id="table-result">
+            <thead>
+            <tr>
+                <th>编号</th>
+                <th>姓名</th>
+                <th>性别</th>
+                <th>电话</th>
+                <th>籍贯</th>
+                <th>生日</th>
+                <th>学历</th>
+                <th>地址</th>
+                <th>薪水</th>
+                <th>工龄</th>
+                <th style="width: 3.5em;"></th>
+            </tr>
+            </thead>
+
+            <tbody id="tbody-result"></tbody>
+        </table>
+
+        <div class="row">
+            <div class="col-md-4">
+                <div id="alter_r">
+                </div>
+            </div>
+        </div>
+
         <footer>
             <hr>
             <!-- Purchase a site license to remove this link from the footer: http://www.portnine.com/bootstrap-themes -->
@@ -186,6 +221,7 @@
         </footer>
     </div>
 </div>
+
 
 <script src="lib/bootstrap/js/bootstrap.js"></script>
 <script type="text/javascript">
