@@ -146,6 +146,7 @@
         </li>
         <li><a href="AccountList.html" class="nav-header"><i class="fa fa-fw fa-recycle"></i> 用户列表</a></li>
         <li><a href="AccountEngineerList.html" class="nav-header"><i class="fa fa-fw fa-recycle"></i> 工程师列表</a></li>
+        <li><a href="printAllOperation.html" class="nav-header"><i class="fa fa-fw fa-recycle"></i> 操作记录</a></li>
     </ul>
 </div>
 
@@ -164,7 +165,7 @@
                             <div class="form-group">
                                 <label>编号</label>
                                 <input type="text" value="" class="form-control" id="user_id" onblur="checkbirthday(this)"
-                                       oninput = "value=value.replace(/[^\d]/g,'')">
+                                       oninput = "value=value.replace(/[^\d]/g,'')" maxlength="4"/>
                                 <input type="hidden" id="user_name">
                                 <input type="hidden" id="username">
                             </div>

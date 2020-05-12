@@ -46,7 +46,7 @@
             var engineer_nameMsg = document.getElementById("engineer_nameMsg");
             var length = engineer_name.value.length;
             if(length < 1) {
-                engineer_nameMsg.innerText = "用户名长度不超过20位,且不为空!";
+                engineer_nameMsg.innerText = "用户名长度不超过10位,且不为空!";
             } else {
                 engineer_nameMsg.innerText = "";
             }
@@ -91,7 +91,7 @@
         function checknativeplace(nativeplace) {
             var nativeplaceMsg = document.getElementById("nativeplaceMsg");
             var length = nativeplace.value.length;
-            if(length < 1) {
+            if(length < 1 || length > 10) {
                 nativeplaceMsg.innerText = "籍贯不为空!";
             } else {
                 nativeplaceMsg.innerText = "";
@@ -277,7 +277,7 @@
                             <div class="form-group">
                                 <label>姓名</label>
                                 <input type="text" value="" class="form-control" id="engineer_name" onblur="checkengineer_name(this)"
-                                       oninput = "value=value.replace(/[^\u4e00-\u9fa5_a-zA-Z0-9]/g,'')" maxlength="20"/>
+                                       oninput = "value=value.replace(/[^\u4e00-\u9fa5_a-zA-Z0-9]/g,'')" maxlength="10"/>
                                 <a color="red" id="engineer_nameMsg"></a>
                             </div>
                             <div class="form-group">
@@ -307,7 +307,7 @@
                             <div class="form-group">
                                 <label>籍贯</label>
                                 <input type="text" value="" maxlength="10" class="form-control" id="nativeplace" onblur="checknativeplace(this)"
-                                       oninput = "value=value.replace(/[^\u4e00-\u9fa5_a-zA-Z]/g,'')"/>
+                                       oninput = "value=value.replace(/[^\u4e00-\u9fa5_a-zA-Z]/g,'')" maxlength="10"/>
                                 <a color="red" id="nativeplaceMsg"></a>
                             </div>
                             <div class="form-group">
@@ -319,7 +319,7 @@
                             <div class="form-group">
                                 <label>薪水</label>
                                 <input type="text" value="" class="form-control"  id="salary" onblur="checksalary(this)"
-                                       oninput = "value=value.replace(/[^\d]/g,'')" maxlength="10"/>
+                                       oninput = "value=value.replace(/[^\d]/g,'')" maxlength="9"/>
                                 <a color="red" id="salaryMsg"></a>
                             </div>
                             <div class="form-group">

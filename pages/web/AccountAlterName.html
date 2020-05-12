@@ -52,7 +52,7 @@
         var usernameMsg = document.getElementById("usernameMsg");
         var length = username.value.length;
         if(length < 1) {
-            usernameMsg.innerText = "用户名长度不超过20位,且不为空!";
+            usernameMsg.innerText = "用户名长度不超过10位,且不为空!";
         } else {
             usernameMsg.innerText = "";
         }
@@ -186,6 +186,7 @@
         </li>
         <li><a href="AccountList.html" class="nav-header"><i class="fa fa-fw fa-recycle"></i> 用户列表</a></li>
         <li><a href="AccountEngineerList.html" class="nav-header"><i class="fa fa-fw fa-recycle"></i> 工程师列表</a></li>
+        <li><a href="printAllOperation.html" class="nav-header"><i class="fa fa-fw fa-recycle"></i> 操作记录</a></li>
     </ul>
 </div>
 
@@ -202,7 +203,8 @@
                         <form id="tab">
                             <div class="form-group">
                                 <label>用户名</label>
-                                <input id="userName" type="text" value="" class="form-control">
+                                <input id="userName" type="text" value="" class="form-control"
+                                       oninput = "value=value.replace(/[^\u4e00-\u9fa5_a-zA-Z0-9]/g,'')" maxlength="10"/>
                             </div>
                         </form>
                     </div>
@@ -213,7 +215,7 @@
 
                     <div class="btn-toolbar list-toolbar">
                         <br>
-                        <button id="alterU" class="btn btn-default"><i class="fa fa-pencil"></i> 修改</button>
+                        <button id="alterU" class="btn btn-default"><i class="fa fa-pencil"></i> 修改（重新获取用户数据）</button>
                         <!--a href="#myModal" data-toggle="modal" class="btn btn-danger">Delete</a-->
                     </div>
                 </div>

@@ -38,7 +38,7 @@
             var engineer_nameMsg = document.getElementById("engineer_nameMsg");
             var length = engineer_name.value.length;
             if(length < 1) {
-                engineer_nameMsg.innerText = "用户名长度不超过20位,且不为空!";
+                engineer_nameMsg.innerText = "用户名长度不超过10位,且不为空!";
             } else {
                 engineer_nameMsg.innerText = "";
             }
@@ -262,7 +262,7 @@
                 <div id="myTabContent" class="tab-content">
                             <div class="form-group">
                                 <label>姓名</label>
-                                <input class="form-control" id="engineer_name" maxlength="20"
+                                <input class="form-control" id="engineer_name" maxlength="10"
                                        oninput = "value=value.replace(/[^\u4e00-\u9fa5_a-zA-Z0-9]/g,'')"/>
                             </div>
                 </div>

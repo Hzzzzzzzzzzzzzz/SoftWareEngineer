@@ -79,7 +79,7 @@
         var usernameMsg = document.getElementById("usernameMsg");
         var length = username.value.length;
         if(length < 1) {
-            usernameMsg.innerText = "用户名长度不超过20位,且不为空!";
+            usernameMsg.innerText = "用户名长度不超过10位,且不为空!";
         } else {
             usernameMsg.innerText = "";
         }
@@ -200,6 +200,7 @@
         </li>
         <li><a href="AccountList.html" class="nav-header"><i class="fa fa-fw fa-recycle"></i> 用户列表</a></li>
         <li><a href="AccountEngineerList.html" class="nav-header"><i class="fa fa-fw fa-recycle"></i> 工程师列表</a></li>
+        <li><a href="printAllOperation.html" class="nav-header"><i class="fa fa-fw fa-recycle"></i> 操作记录</a></li>
     </ul>
 </div>
 
@@ -219,19 +220,19 @@
                             <div class="form-group">
                                 <label>用户名</label>
                                 <input type="text" value="" class="form-control" id="username" onblur="checkusername(this)"
-                                       oninput = "value=value.replace(/[^\u4e00-\u9fa5_a-zA-Z0-9]/g,'')" maxlength="20"/>
+                                       oninput = "value=value.replace(/[^\u4e00-\u9fa5_a-zA-Z0-9]/g,'')" maxlength="10"/>
                                 <a color="red" id="usernameMsg"></a>
                             </div>
                             <div class="form-group">
                                 <label>密码</label>
                                 <input type="text" value="" class="form-control" id="password" onblur="checkpassword(this)"
-                                       oninput = "value=value.replace(/[^a-zA-Z0-9]/g,'')" maxlength="20"/>
+                                       oninput = "value=value.replace(/[^a-zA-Z0-9]/g,'')" maxlength="10"/>
                                 <a color="red" id="passwordMsg"></a>
                             </div>
                             <div class="form-group">
                                 <label>姓名</label>
                                 <input type="text" value="" class="form-control" id="user_name" onblur="checkuser_name(this)"
-                                       oninput = "value=value.replace(/[^\u4e00-\u9fa5_a-zA-Z0-9]/g,'')" maxlength="20"/>
+                                       oninput = "value=value.replace(/[^\u4e00-\u9fa5_a-zA-Z0-9]/g,'')" maxlength="10"/>
                                 <a color="red" id="user_nameMsg"></a>
                             </div>
                             <div class="form-group">

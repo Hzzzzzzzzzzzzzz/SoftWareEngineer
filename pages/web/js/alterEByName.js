@@ -82,7 +82,7 @@ $(document).ready(
                 str += "                            <div class=\"form-group\">";
                 str += "                                <label>姓名<\/label>";
                 str += "                                <input type=\"text\" value=" + _json[i].name + " class=\"form-control\" id=\"nengineer_name\" onblur=\"checkengineer_name(this)\"";
-                str += "                                       oninput = \"value=value.replace(\/[^\u4e00-\u9fa5_a-zA-Z0-9]\/g,'')\" maxlength=\"20\"\/>";
+                str += "                                       oninput = \"value=value.replace(\/[^\u4e00-\u9fa5_a-zA-Z0-9]\/g,'')\" maxlength=\"10\"\/>";
                 str += "                                <a color=\"red\" id=\"engineer_nameMsg\"><\/a>";
                 str += "                            <\/div>";
                 str += "                            <div class=\"form-group\">";
@@ -124,7 +124,7 @@ $(document).ready(
                 str += "                            <div class=\"form-group\">";
                 str += "                                <label>薪水<\/label>";
                 str += "                                <input type=\"text\" value=" + _json[i].salary + " class=\"form-control\"  id=\"salary\" onblur=\"checksalary(this)\"";
-                str += "                                       oninput = \"value=value.replace(\/[^\\d]\/g,'')\" maxlength=\"10\"\/>";
+                str += "                                       oninput = \"value=value.replace(\/[^\\d]\/g,'')\" maxlength=\"9\"\/>";
                 str += "                                <a color=\"red\" id=\"salaryMsg\"><\/a>";
                 str += "                            <\/div>";
                 str += "                            <div class=\"form-group\">";
