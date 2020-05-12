@@ -24,6 +24,104 @@
     <script src="//cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
     <script type="text/javascript" src="./js/alterEByName.js"></script>
 
+    <script type="text/javascript">
+        function checkengineer_id(engineer_id) {
+            var usernameMsg = document.getElementById("engineer_idMsg");
+            var length = engineer_id.value.length;
+            if(length < 1) {
+                usernameMsg.innerText = "id不能为空";
+            } else {
+                usernameMsg.innerText = "";
+            }
+        }
+        function checkengineer_name(engineer_name) {
+            var engineer_nameMsg = document.getElementById("engineer_nameMsg");
+            var length = engineer_name.value.length;
+            if(length < 1) {
+                engineer_nameMsg.innerText = "用户名长度不超过20位,且不为空!";
+            } else {
+                engineer_nameMsg.innerText = "";
+            }
+        }
+        function checkengineer_sex(engineer_sex) {
+            var engineer_sexMsg = document.getElementById("engineer_sexMsg");
+            var length = engineer_sex.value.length;
+            if(length < 1) {
+                engineer_sexMsg.innerText = "性别不为空！";
+            } else {
+                engineer_sexMsg.innerText = "";
+            }
+        }
+        function checkbirthday(birthday) {
+            var birthdayMsg = document.getElementById("birthdayMsg");
+            var pattern = /^((19[2-9]\d{1})|(20((0[0-4]))))\-((0?[1-9])|(1[0-2]))\-((0?[1-9])|([1-2][0-9])|30|31)$/;
+            if(pattern.test(birthday.value)==false) {
+                birthdayMsg.innerText = "生日(1920-2004)格式为****-**-**，且不为空！";
+            } else {
+                pattern.test(birthday.value)==true;
+                birthdayMsg.innerText = "";
+            }
+        }
+        function checkmobile(mobile) {
+            var mobileMsg = document.getElementById("mobileMsg");
+            var length = mobile.value.length;
+            if(length < 1) {
+                mobileMsg.innerText = "电话不为空！";
+            } else {
+                mobileMsg.innerText = "";
+            }
+        }
+        function checkaddress(address) {
+            var addressMsg = document.getElementById("addressMsg");
+            var length = address.value.length;
+            if(length < 1) {
+                addressMsg.innerText = "地址不为空！";
+            } else {
+                addressMsg.innerText = "";
+            }
+        }
+        function checknativeplace(nativeplace) {
+            var nativeplaceMsg = document.getElementById("nativeplaceMsg");
+            var length = nativeplace.value.length;
+            if(length < 1) {
+                nativeplaceMsg.innerText = "籍贯不为空!";
+            } else {
+                nativeplaceMsg.innerText = "";
+            }
+        }
+        function checkworkingYears(workingYears) {
+            var workingYearsMsg = document.getElementById("workingYearsMsg");
+            var length = workingYears.value.length;
+            var workingYearss=$("#workingYears").val();
+            if(length < 1 ) {
+                workingYearsMsg.innerText = "工龄不为空!";
+            }
+            else if(workingYearss<0 || workingYearss>50 ) {
+                workingYearsMsg.innerText = "工龄范围为0-50!";
+            } else {
+                workingYearsMsg.innerText = "";
+            }
+        }
+        function checksalary(salary) {
+            var salaryMsg = document.getElementById("salaryMsg");
+            var length = salary.value.length;
+            if(length < 1) {
+                salaryMsg.innerText = "薪水不为空!";
+            } else {
+                salaryMsg.innerText = "";
+            }
+        }
+        function checkeducation(education) {
+            var educationMsg = document.getElementById("educationMsg");
+            var length = education.value.length;
+            if( length < 1) {
+                educationMsg.innerText = "学历不为空!";
+            } else {
+                educationMsg.innerText = "";
+            }
+        }
+    </script>
+
     <link rel="stylesheet" type="text/css" href="stylesheets/theme.css">
     <link rel="stylesheet" type="text/css" href="stylesheets/premium.css">
 
@@ -164,7 +262,8 @@
                 <div id="myTabContent" class="tab-content">
                             <div class="form-group">
                                 <label>姓名</label>
-                                <input class="form-control" id="engineer_name" maxlength="20">
+                                <input class="form-control" id="engineer_name" maxlength="20"
+                                       oninput = "value=value.replace(/[^\u4e00-\u9fa5_a-zA-Z0-9]/g,'')"/>
                             </div>
                 </div>
 

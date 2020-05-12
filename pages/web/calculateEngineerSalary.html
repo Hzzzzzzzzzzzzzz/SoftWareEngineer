@@ -35,7 +35,7 @@
                             <div class="form-group">
                                 <label>工程师编号</label>
                                 <input type="text" value="" class="form-control" id="calu_PersonId" type="text"
-                               oninput = "value=value.replace(/[^\d]/g,'')" maxlength="6">
+                               oninput = "value=value.replace(/[^\d]/g,'')" maxlength="4">
                             </div>
 		<div class="form-group">
                                 <label>月工作天数</label>
@@ -92,11 +92,12 @@
 $(document).ready(function(){
 	var body=document.getElementById('n_r');
   	body.innerHTML = $.cookie('u_name');
-  	//alert('222');
+  	//
+
   $("#calculateSalary").click(function(){
 	  
 		var the_id = $("#calu_PersonId").val();
-		var WorkDays = $("#calu_WorkDays").val();
+        var WorkDays = $("#calu_WorkDays").val();
     	var Benefit = $("#calu_Benefit").val();
     	var NeedPaid = $("#calu_NeedPaid").val();
 		if (the_id =="" ||WorkDays== ""
@@ -104,11 +105,16 @@ $(document).ready(function(){
 			alert("输入格式有误"); 
 			return ;
 		}
+      if($("#calu_WorkDays").val()<0 || $("#calu_WorkDays").val()>31){
+          alert("月工作天数范围为0-31");
+          return ;
+      }
 		 if (!$.cookie('u_id'))
 		 {
 			 $('#printfResult').html("请重新登录");
 			 return ;
 		 }
+
 		 var u_id = $.cookie('u_id');
 		ajaxObj = $.ajax({
 			type:"get",

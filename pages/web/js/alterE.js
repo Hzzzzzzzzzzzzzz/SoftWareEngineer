@@ -35,79 +35,79 @@ $(document).ready(
                         return;
                     }
 
-                    var str = "";
                     var json = eval("("+ajaxObj.responseText+")");
 
                     if(json!="") {
-                        str = ["                        <form id=\"tab\" action=\"\" method=\"post\" >",
-                            "                            <div class=\"form-group\">",
-                            "                                <label>编号</label>",
-                            "                                <input disabled='disabled' type=\"text\" value=" + json[0].engineer_id + " class=\"form-control\" id=\"nengineer_id\"/>",
-                            "                                <a color=\"red\" id=\"engineer_engineer_idMsg\"></a>",
-                            "                            </div>",
-                            "                            <div class=\"form-group\">",
-                            "                                <label>姓名</label>",
-                            "                                <input type=\"text\" value=" + json[0].name + " class=\"form-control\" id=\"engineer_name\" onblur=\"checkengineer_name(this)\"",
-                            "                                       oninput = \"value=value.replace(/[^\/\/u4e00-\/\/u9fa5_a-zA-Z0-9]/g,\'\')\" maxlength=\"20\"/>",
-                            "                                <a color=\"red\" id=\"engineer_nameMsg\"></a>",
-                            "                            </div>",
-                            "                            <div class=\"form-group\">",
-                            "                                <label>性别</label>",
-                            "                                <input type=\"text\" value=" + json[0].sex + " class=\"form-control\" id=\"engineer_sex\" onblur=\"checkengineer_sex(this)\"",
-                            "                                       oninput = \"value=value.replace(/[^[0,1]/g,\'\')\" maxlength=\"1\"  placeholder=\"格式：0或1\" />",
-                            "                                <a color=\"red\" id=\"engineer_sexMsg\"></a>",
-                            "                            </div>",
-                            "                            <div class=\"form-group\">",
-                            "                                <label>生日</label>",
-                            "                                <input type=\"text\" value=" + json[0].birthday + " class=\"form-control\" id=\"birthday\" onblur=\"checkbirthday(this)\"",
-                            "                                       oninput = \"value=value.replace(/[^\\d_-]/g,\'\')\" placeholder=\"格式：1998-01-01\" maxlength=\"10\"/>",
-                            "                                <a color=\"red\" id=\"birthdayMsg\"></a>",
-                            "                            </div>",
-                            "                            <div class=\"form-group\">",
-                            "                                <label>电话</label>",
-                            "                                <input type=\"text\" value=" + json[0].mobile + " class=\"form-control\" id=\"mobile\" onblur=\"checkmobile(this)\"",
-                            "                                       oninput = \"value=value.replace(/[^\\d]/g,\'\')\" maxlength=\"15\"/>",
-                            "                                <a color=\"red\" id=\"mobileMsg\"></a>",
-                            "                            </div>",
-                            "                            <div class=\"form-group\">",
-                            "                                <label>地址</label>",
-                            "                                <input type=\"text\" value=" + json[0].address + " class=\"form-control\" id=\"address\" onblur=\"checkaddress(this)\"",
-                            "                                       oninput = \"value=value.replace(/[^\/\/u4e00-\/\/u9fa5_a-zA-Z0-9]/g,\'\')\" maxlength=\"30\"/>",
-                            "                                <a color=\"red\" id=\"addressMsg\"></a>",
-                            "                            </div>",
-                            "                            <div class=\"form-group\">",
-                            "                                <label>籍贯</label>",
-                            "                                <input type=\"text\" value=" + json[0].nativeplace + " class=\"form-control\" id=\"nativeplace\" onblur=\"checknativeplace(this)\"",
-                            "                                       oninput = \"value=value.replace(/[^\/\/u4e00-\/\/u9fa5_a-zA-Z]/g,\'\')\" maxlength=\"10\"/>",
-                            "                                <a color=\"red\" id=\"nativeplaceMsg\"></a>",
-                            "                            </div>",
-                            "                            <div class=\"form-group\">",
-                            "                                <label>工龄</label>",
-                            "                                <input type=\"text\" value=" + json[0].workingYears + " class=\"form-control\" id=\"workingYears\" onblur=\"checkworkingYears(this)\"",
-                            "                                       oninput = \"value=value.replace(/[^\\d]/g,\'\')\" maxlength=\"2\"/>",
-                            "                                <a color=\"red\" id=\"workingYearsMsg\"></a>",
-                            "                            </div>",
-                            "                            <div class=\"form-group\">",
-                            "                                <label>薪水</label>",
-                            "                                <input type=\"text\" value=" + json[0].salary + " class=\"form-control\"  id=\"salary\" onblur=\"checksalary(this)\"",
-                            "                                       oninput = \"value=value.replace(/[^\\d]/g,\'\')\" maxlength=\"10\"/>",
-                            "                                <a color=\"red\" id=\"salaryMsg\"></a>",
-                            "                            </div>",
-                            "                            <div class=\"form-group\">",
-                            "                                <label>学历</label>",
-                            "                                <br>",
-                            "                                <select class=\"selectpicker\" id=\"education\" data-style=\"btn-primary\" data-width=\"20\">",
-                            "                                    <option>小学</option>",
-                            "                                    <option>初中</option>",
-                            "                                    <option>中专</option>",
-                            "                                    <option>高中</option>",
-                            "                                    <option>专科</option>",
-                            "                                    <option>本科</option>",
-                            "                                    <option>硕士研究生</option>",
-                            "                                    <option>博士研究生</option>",
-                            "                                </select>",
-                            "                            </div>",
-                            "                        </form>"].join("");
+
+                        var str="";
+                        str += "<form id=\"tab\" action=\"\" method=\"post\" >";
+                        str += "							<div class=\"form-group\">";
+                        str += "                                <label>编号<\/label>";
+                        str += "                                <input disabled=\"disabled\" type=\"text\" value=" + json[0].engineer_id + " class=\"form-control\" id=\"nengineer_id\"\/>";
+                        str += "                            <\/div>";
+                        str += "                            <div class=\"form-group\">";
+                        str += "                                <label>姓名<\/label>";
+                        str += "                                <input type=\"text\" value=" + json[0].name + " class=\"form-control\" id=\"engineer_name\" onblur=\"checkengineer_name(this)\"";
+                        str += "                                       oninput = \"value=value.replace(\/[^\u4e00-\u9fa5_a-zA-Z0-9]\/g,'')\" maxlength=\"20\"\/>";
+                        str += "                                <a color=\"red\" id=\"engineer_nameMsg\"><\/a>";
+                        str += "                            <\/div>";
+                        str += "                            <div class=\"form-group\">";
+                        str += "                                <label>性别<\/label>";
+                        str += "                                <input type=\"text\" value=" + json[0].sex + " class=\"form-control\" id=\"engineer_sex\" onblur=\"checkengineer_sex(this)\"";
+                        str += "                                       oninput = \"value=value.replace(\/[^0,1]\/g,'')\" maxlength=\"1\"  placeholder=\"格式：0或1\" \/>";
+                        str += "                                <a color=\"red\" id=\"engineer_sexMsg\"><\/a>";
+                        str += "                            <\/div>";
+                        str += "                            <div class=\"form-group\">";
+                        str += "                                <label>生日<\/label>";
+                        str += "                                <input type=\"text\" value=" + json[0].birthday + " class=\"form-control\" id=\"birthday\" onblur=\"checkbirthday(this)\"";
+                        str += "                                       oninput = \"value=value.replace(\/[^\\d_-]\/g,'')\" placeholder=\"格式：1998-01-01\" maxlength=\"10\"\/>";
+                        str += "                                <a color=\"red\" id=\"birthdayMsg\"><\/a>";
+                        str += "                            <\/div>";
+                        str += "                            <div class=\"form-group\">";
+                        str += "                                <label>电话<\/label>";
+                        str += "                                <input type=\"text\" value=" + json[0].mobile + " class=\"form-control\" id=\"mobile\" onblur=\"checkmobile(this)\"";
+                        str += "                                       oninput = \"value=value.replace(\/[^\\d]\/g,'')\" maxlength=\"15\"\/>";
+                        str += "                                <a color=\"red\" id=\"mobileMsg\"><\/a>";
+                        str += "                            <\/div>";
+                        str += "                            <div class=\"form-group\">";
+                        str += "                                <label>地址<\/label>";
+                        str += "                                <input type=\"text\" value=" + json[0].address + " class=\"form-control\" id=\"address\" onblur=\"checkaddress(this)\"";
+                        str += "                                       oninput = \"value=value.replace(\/[^\u4e00-\u9fa5_a-zA-Z0-9]\/g,'')\" maxlength=\"30\"\/>";
+                        str += "                                <a color=\"red\" id=\"addressMsg\"><\/a>";
+                        str += "                            <\/div>";
+                        str += "                            <div class=\"form-group\">";
+                        str += "                                <label>籍贯<\/label>";
+                        str += "                                <input type=\"text\" value=" + json[0].nativeplace + " maxlength=\"10\" class=\"form-control\" id=\"nativeplace\" onblur=\"checknativeplace(this)\"";
+                        str += "                                       oninput = \"value=value.replace(\/[^\u4e00-\u9fa5_a-zA-Z]\/g,'')\"\/>";
+                        str += "                                <a color=\"red\" id=\"nativeplaceMsg\"><\/a>";
+                        str += "                            <\/div>";
+                        str += "                            <div class=\"form-group\">";
+                        str += "                                <label>工龄<\/label>";
+                        str += "                                <input type=\"text\" value=" + json[0].workingYears + " class=\"form-control\" id=\"workingYears\" onblur=\"checkworkingYears(this)\"";
+                        str += "                                       oninput = \"value=value.replace(\/[^\\d]\/g,'')\" maxlength=\"2\"\/>";
+                        str += "                                <a color=\"red\" id=\"workingYearsMsg\"><\/a>";
+                        str += "                            <\/div>";
+                        str += "                            <div class=\"form-group\">";
+                        str += "                                <label>薪水<\/label>";
+                        str += "                                <input type=\"text\" value=" + json[0].salary + " class=\"form-control\"  id=\"salary\" onblur=\"checksalary(this)\"";
+                        str += "                                       oninput = \"value=value.replace(\/[^\\d]\/g,'')\" maxlength=\"10\"\/>";
+                        str += "                                <a color=\"red\" id=\"salaryMsg\"><\/a>";
+                        str += "                            <\/div>";
+                        str += "                            <div class=\"form-group\">";
+                        str += "                                <label>学历<\/label>";
+                        str += "                                <br>";
+                        str += "                                <select class=\"selectpicker\" id=\"education\" data-style=\"btn-primary\" data-width=\"20\">";
+                        str += "                                    <option>小学<\/option>";
+                        str += "                                    <option>初中<\/option>";
+                        str += "                                    <option>中专<\/option>";
+                        str += "                                    <option>高中<\/option>";
+                        str += "                                    <option>专科<\/option>";
+                        str += "                                    <option>本科<\/option>";
+                        str += "                                    <option>硕士研究生<\/option>";
+                        str += "                                    <option>博士研究生<\/option>";
+                        str += "                                <\/select>";
+                        str += "                            <\/div>";
+                        str += "                        <\/form>";
 
                         $("#check").attr("disabled",false);
 
@@ -130,6 +130,11 @@ $(document).ready(
                 $("#address").val() == "" || $("#nativeplace").val() == "" || $("#workingYears").val() == "" || $("#salary").val() == "" ||
                 $("#nengineer_id").val() == "" || $("#user_id").val() == "") {
                 alert("不允许有字段为空");
+                return;
+            }
+
+            if( birthdayMsg.innerText != "") {
+                alert("生日不在限定范围内");
                 return;
             }
 

@@ -28,6 +28,7 @@ $(document).ready(
             var insert_type=$("#insert_type").val();
             var update_user_id=$("#update_user_id").val();
             var update_engineer_id=$("#update_engineer_id").val();
+            var pattern = /^((19[2-9]\d{1})|(20((0[0-4]))))\-((0?[1-9])|(1[0-2]))\-((0?[1-9])|([1-2][0-9])|30|31)$/;
             if (engineer_name == ""){
                 alert("姓名不能为空");
                 return;
@@ -57,6 +58,10 @@ $(document).ready(
                 return;
             }else if(salary == "0"){
                 alert("薪水不能为0");
+                return;
+            }
+            else if( birthdayMsg.innerText != "") {
+                alert("生日不在限定范围内");
                 return;
             }
             ajaxObj = $.ajax({

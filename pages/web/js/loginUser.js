@@ -7,6 +7,12 @@ $(document).ready(
                         return;
                     }
 
+                 if ($("#password").val().indexOf(" ") == -1 && $("#username").val().indexOf(" ") == -1){
+                 }else {
+                     alert("账号与密码不得包含空格！");
+                     return;
+                 }
+
                 ajaxObj = $.ajax({
                 type:"get",
                 contentType: "application/json;charset=UTF-8",

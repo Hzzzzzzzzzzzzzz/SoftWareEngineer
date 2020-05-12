@@ -62,10 +62,11 @@
         }
         function checkbirthday(birthday) {
             var birthdayMsg = document.getElementById("birthdayMsg");
-            var pattern = /^((19[0-9]\d{1})|(20((0[0-4]))))\-((0?[1-9])|(1[0-2]))\-((0?[1-9])|([1-2][0-9])|30|31)$/;
+            var pattern = /^((19[2-9]\d{1})|(20((0[0-4]))))\-((0?[1-9])|(1[0-2]))\-((0?[1-9])|([1-2][0-9])|30|31)$/;
             if(pattern.test(birthday.value)==false) {
-                birthdayMsg.innerText = "生日格式为****-**-**，且不为空！";
+                birthdayMsg.innerText = "生日(1920-2004)格式为****-**-**，且不为空！";
             } else {
+                pattern.test(birthday.value)==true;
                 birthdayMsg.innerText = "";
             }
         }
@@ -99,8 +100,12 @@
         function checkworkingYears(workingYears) {
             var workingYearsMsg = document.getElementById("workingYearsMsg");
             var length = workingYears.value.length;
-            if(length < 1) {
+            var workingYearss=$("#workingYears").val();
+            if(length < 1 ) {
                 workingYearsMsg.innerText = "工龄不为空!";
+            }
+            else if(workingYearss<0 || workingYearss>50 ) {
+                workingYearsMsg.innerText = "工龄范围为0-50!";
             } else {
                 workingYearsMsg.innerText = "";
             }
@@ -278,13 +283,13 @@
                             <div class="form-group">
                                 <label>性别</label>
                                 <input type="text" value="" class="form-control" id="engineer_sex" onblur="checkengineer_sex(this)"
-                                       oninput = "value=value.replace(/[^[0,1]/g,'')" maxlength="1"  placeholder="格式：0或1" />
+                                       oninput = "value=value.replace(/[^0,1]/g,'')" maxlength="1"  placeholder="格式：0或1" />
                                 <a color="red" id="engineer_sexMsg"></a>
                             </div>
                             <div class="form-group">
                                 <label>生日</label>
                                 <input type="text" value="" class="form-control" id="birthday" onblur="checkbirthday(this)"
-                                       oninput = "value=value.replace(/[^\d_-]/g,'')" placeholder="格式：1998-01-01" maxlength="10"/>
+                                       oninput = "value=value.replace(/[^\d_-]/g,'')" placeholder="格式：1998-01-01,年份范围:1920-2004" maxlength="10"/>
                                 <a color="red" id="birthdayMsg"></a>
                             </div>
                             <div class="form-group">

@@ -167,7 +167,8 @@
                         <form id="tab">
                             <div class="form-group">
                                 <label>姓名</label>
-                                <input type="text" value="" class="form-control" id="engineer_name">
+                                <input type="text" value="" class="form-control" id="engineer_name"
+                                       oninput = "value=value.replace(/[^\u4e00-\u9fa5_a-zA-Z0-9]/g,'')" maxlength="20">
                                 <input type="hidden" id="engineer_id">
                                 <input type="hidden" id="user_id">
                                 <input type="hidden" id="user_name">
