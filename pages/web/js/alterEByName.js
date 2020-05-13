@@ -68,8 +68,10 @@ $(document).ready(
         });
 
 
+
+        var i;
         $('tbody').on('click', '.al',function () {
-            var i = $(this).attr("id");
+            i = $(this).attr("id");
 
             if(_json!="") {
 
@@ -204,6 +206,16 @@ $(document).ready(
                         alert("格式不正确，请重新输入！");
                     } else {
                         alert("修改成功！");
+
+                        $('table td').eq(1 + 11 * i).html($("#nengineer_name").val());
+                        $('table td').eq(2 + 11 * i).html($("#engineer_sex").val());
+                        $('table td').eq(3 + 11 * i).html($("#mobile").val());
+                        $('table td').eq(4 + 11 * i).html($("#nativeplace").val());
+                        $('table td').eq(5 + 11 * i).html($("#birthday").val());
+                        $('table td').eq(6 + 11 * i).html($("#education").val());
+                        $('table td').eq(7 + 11 * i).html($("#address").val());
+                        $('table td').eq(8 + 11 * i).html($("#salary").val());
+                        $('table td').eq(9 + 11 * i).html($("#workingYears").val());
                     }
                 },
                 error:function () {

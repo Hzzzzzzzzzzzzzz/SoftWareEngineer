@@ -5,6 +5,7 @@ $(document).ready(
             ajaxObj = $.ajax({
                 type:"get",
                 contentType: "application/json;charset=UTF-8",
+                // url:"service",
                 url:"http://193.112.176.224:8080/Web_war/service",
                 async:true,
                 data:{
@@ -33,10 +34,9 @@ $(document).ready(
                 },
                 success:function () {
                     $("#result").html(ajaxObj.responseText);
-                    $("input[type='text']").val("");
+                    // $("input[type='text']").val("");
                 },
                 error:function () {
-                    // alert("error");
                     $("#result").html(ajaxObj.responseText);
                     $("input[type='text']").val("");
                 }
