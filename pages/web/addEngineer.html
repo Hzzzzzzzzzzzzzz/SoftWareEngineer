@@ -283,13 +283,13 @@
                             <div class="form-group">
                                 <label>性别</label>
                                 <input type="text" value="" class="form-control" id="engineer_sex" onblur="checkengineer_sex(this)"
-                                       oninput = "value=value.replace(/[^0,1]/g,'')" maxlength="1"  placeholder="格式：0或1" />
+                                       oninput = "value=value.replace(/[^01]/g,'')" maxlength="1"  placeholder="格式：0或1" />
                                 <a color="red" id="engineer_sexMsg"></a>
                             </div>
                             <div class="form-group">
                                 <label>生日</label>
                                 <input type="text" value="" class="form-control" id="birthday" onblur="checkbirthday(this)"
-                                       oninput = "value=value.replace(/[^\d_-]/g,'')" placeholder="格式：1998-01-01,年份范围:1920-2004" maxlength="10"/>
+                                       oninput = "value=value.replace(/[^\d-]/g,'')" placeholder="格式：1998-01-01,年份范围:1920-2004" maxlength="10"/>
                                 <a color="red" id="birthdayMsg"></a>
                             </div>
                             <div class="form-group">
@@ -301,13 +301,13 @@
                             <div class="form-group">
                                 <label>地址</label>
                                 <input type="text" value="" class="form-control" id="address" onblur="checkaddress(this)"
-                                       oninput = "value=value.replace(/[^\u4e00-\u9fa5_a-zA-Z0-9]/g,'')" maxlength="30"/>
+                                       oninput = "value=value.replace(/[^\u4e00-\u9fa5a-zA-Z0-9]/g,'')" maxlength="30"/>
                                 <a color="red" id="addressMsg"></a>
                             </div>
                             <div class="form-group">
                                 <label>籍贯</label>
                                 <input type="text" value="" maxlength="10" class="form-control" id="nativeplace" onblur="checknativeplace(this)"
-                                       oninput = "value=value.replace(/[^\u4e00-\u9fa5_a-zA-Z]/g,'')" maxlength="10"/>
+                                       oninput = "value=value.replace(/[^\u4e00-\u9fa5a-zA-Z]/g,'')" maxlength="10"/>
                                 <a color="red" id="nativeplaceMsg"></a>
                             </div>
                             <div class="form-group">

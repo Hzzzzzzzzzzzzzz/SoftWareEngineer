@@ -57,7 +57,7 @@ $(document).ready(
                     strVar += "                            <div class=\"form-group\">";
                     strVar += "                                <label>性别<\/label>";
                     strVar += "                                <input type=\"text\" value=" + json.sex + " class=\"form-control\"  id=\"user_sex\" onblur=\"checkuser_sex(this)\"";
-                    strVar += "                                       oninput = \"value=value.replace(\/[^[0,1]\/g,'')\" maxlength=\"1\"  placeholder=\"格式：0或1\"\/>";
+                    strVar += "                                       oninput = \"value=value.replace(\/[^[01]\/g,'')\" maxlength=\"1\"  placeholder=\"格式：0或1\"\/>";
                     strVar += "                                <a color=\"red\" id=\"user_sexMsg\"><\/a>";
                     strVar += "                            <\/div>";
                     strVar += "                        <\/form>";

@@ -87,7 +87,7 @@ public class service extends HttpServlet {
 				case GetUserPwd:
 					userName = request.getParameter("userName");
 					try {
-						sql = "select password from useraccount where userName = ?";
+						sql = "select password,user_id from useraccount where userName = ?";
 						PreparedStatement ps = connection.prepareStatement(sql);
 						ps.setString(1, userName);
 						ResultSet resultSet = ps.executeQuery();
@@ -95,8 +95,11 @@ public class service extends HttpServlet {
 						if (resultSet != null) {
 							resultSet.next();
 							map.put("password", resultSet.getString(1));
+							map.put("user_id", resultSet.getString(2));
 							JSONObject jsonObject = JSONObject.fromObject(map);
 							response.getWriter().write(jsonObject.toString());
+							record = String.format("用户名为%s的用户尝试登陆",userName);
+							insert(record,connection);
 						}else {
 							response.getWriter().write("error : NullPointerException");
 						}
@@ -122,6 +125,7 @@ public class service extends HttpServlet {
 							map.put("userName",resultSet.getString(5));
 							JSONObject jsonObject = JSONObject.fromObject(map);
 							response.getWriter().write(jsonObject.toString());
+							insert(String.format("管理员查询id为%s的用户信息",request.getParameter("user_id")),connection);
 						} else {
 							response.getWriter().write("error : NullPointerException");
 						}
@@ -144,7 +148,7 @@ public class service extends HttpServlet {
 							response.getWriter().write("error : NullPointerException");
 							return;
 						}
-						record = String.format("用户名为%s的用户尝试登陆",userName);
+						record = String.format("管理员查询用户名为%s的用户信息",userName);
 						sql_record = String.format("insert into records (data,time) values ('%s','%s')",record,getDate());
 						ps_re = connection.prepareStatement(sql_record);
 						ps_re.executeUpdate();
@@ -356,7 +360,10 @@ public class service extends HttpServlet {
 									ps_update = connection.prepareStatement(sql);
 									ps_update.execute();
 									response.getWriter().write("update engineer ok");
-									insert(String.format("修改id为%d的工程师的信息",engineer_id),connection);
+									if(request.getParameter("user_id").isEmpty())
+										insert(String.format("修改id为%d的工程师的信息",engineer_id),connection);
+									else
+										insert(String.format("id为%s的用户修改id为%d的工程师的信息",request.getParameter("user_id"),engineer_id),connection);
 								}catch (Exception e){
 									e.printStackTrace();
 									response.getWriter().write("error: update engineerdetails error");
@@ -535,7 +542,7 @@ public class service extends HttpServlet {
 						}else
 							record = "管理员查询所有的工程师的信息";
 						if(insert_type==1)
-							record = "管理员查询所有的工程师的信息";
+							record = "管理员查询所有的用户的信息";
 						else if(insert_type==3)
 							record = "管理员查询所有的工程师与用户的隶属信息";
 						jsonArray = new JSONArray();
@@ -584,9 +591,13 @@ public class service extends HttpServlet {
 					}else if((!en_id.isEmpty())||(!u_id.isEmpty())){
 						sqls = new String[2];
 						if(en_id.isEmpty()){
+							ps = connection.prepareStatement(String.format("delete from mapping where user_id = %s ",u_id));
+							ps.executeUpdate();
 							sqls[0] = "delete from userdata where user_id = "+u_id.toString();
 							sqls[1]="delete from useraccount where user_id = "+u_id.toString();
 						}else {
+							ps = connection.prepareStatement(String.format("delete from mapping where engineer_id = %s ",en_id));
+							ps.executeUpdate();
 							sqls[0] = "delete from engineerdetails where engineer_id = "+en_id.toString();
 							sqls[1]="delete from engineer where engineer_id = "+en_id.toString();
 						}
@@ -706,14 +717,17 @@ public class service extends HttpServlet {
 						sqls[0] = String.format("delete from userdata where user_id = %d", user_id);
 						sqls[1] = String.format("delete from useraccount where user_id = %d", user_id);
 						ps = connection.prepareStatement(sqls[0]);
-						ps.executeUpdate();
+						if(ps.executeUpdate()==0) {
+							response.getWriter().write("error: 用户不存在");
+							return;
+						}
 						ps = connection.prepareStatement(sqls[1]);
 						ps.executeUpdate();
 						response.getWriter().write("delete ok");
 						insert(String.format("管理员删除id为%d的用户和他旗下的工程师信息",user_id),connection);
 						return;
 					}
-					insert(String.format("管理员删除id为%d的用户的旗下工程师信息",user_id),connection);
+					insert(String.format("id为%d的用户删除旗下工程师信息",user_id),connection);
 					return;
 				case GETRECORD:
 					jsonArray = new JSONArray();

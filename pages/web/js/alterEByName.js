@@ -90,13 +90,13 @@ $(document).ready(
                 str += "                            <div class=\"form-group\">";
                 str += "                                <label>性别<\/label>";
                 str += "                                <input type=\"text\" value=" + _json[i].sex + " class=\"form-control\" id=\"engineer_sex\" onblur=\"checkengineer_sex(this)\"";
-                str += "                                       oninput = \"value=value.replace(\/[^0,1]\/g,'')\" maxlength=\"1\"  placeholder=\"格式：0或1\" \/>";
+                str += "                                       oninput = \"value=value.replace(\/[^01]\/g,'')\" maxlength=\"1\"  placeholder=\"格式：0或1\" \/>";
                 str += "                                <a color=\"red\" id=\"engineer_sexMsg\"><\/a>";
                 str += "                            <\/div>";
                 str += "                            <div class=\"form-group\">";
                 str += "                                <label>生日<\/label>";
                 str += "                                <input type=\"text\" value=" + _json[i].birthday + " class=\"form-control\" id=\"birthday\" onblur=\"checkbirthday(this)\"";
-                str += "                                       oninput = \"value=value.replace(\/[^\\d_-]\/g,'')\" placeholder=\"格式：1998-01-01\" maxlength=\"10\"\/>";
+                str += "                                       oninput = \"value=value.replace(\/[^\\d-]\/g,'')\" placeholder=\"格式：1998-01-01\" maxlength=\"10\"\/>";
                 str += "                                <a color=\"red\" id=\"birthdayMsg\"><\/a>";
                 str += "                            <\/div>";
                 str += "                            <div class=\"form-group\">";
@@ -108,13 +108,13 @@ $(document).ready(
                 str += "                            <div class=\"form-group\">";
                 str += "                                <label>地址<\/label>";
                 str += "                                <input type=\"text\" value=" + _json[i].address + " class=\"form-control\" id=\"address\" onblur=\"checkaddress(this)\"";
-                str += "                                       oninput = \"value=value.replace(\/[^\u4e00-\u9fa5_a-zA-Z0-9]\/g,'')\" maxlength=\"30\"\/>";
+                str += "                                       oninput = \"value=value.replace(\/[^\u4e00-\u9fa5a-zA-Z0-9]\/g,'')\" maxlength=\"30\"\/>";
                 str += "                                <a color=\"red\" id=\"addressMsg\"><\/a>";
                 str += "                            <\/div>";
                 str += "                            <div class=\"form-group\">";
                 str += "                                <label>籍贯<\/label>";
                 str += "                                <input type=\"text\" value=" + _json[i].nativeplace + " maxlength=\"10\" class=\"form-control\" id=\"nativeplace\" onblur=\"checknativeplace(this)\"";
-                str += "                                       oninput = \"value=value.replace(\/[^\u4e00-\u9fa5_a-zA-Z]\/g,'')\"\/>";
+                str += "                                       oninput = \"value=value.replace(\/[^\u4e00-\u9fa5a-zA-Z]\/g,'')\"\/>";
                 str += "                                <a color=\"red\" id=\"nativeplaceMsg\"><\/a>";
                 str += "                            <\/div>";
                 str += "                            <div class=\"form-group\">";
@@ -197,7 +197,7 @@ $(document).ready(
                     "salary":$("#salary").val(),
                     "education":$("#education").val(),
                     "engineer_id":$("#nengineer_id").val(),
-                    "user_id":$("#user_id").val(),
+                    "user_id":$.cookie('u_id'),
                 },
                 success:function () {
 

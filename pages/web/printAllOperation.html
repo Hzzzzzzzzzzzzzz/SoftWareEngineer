@@ -115,7 +115,7 @@
         <li>
             <ul class="alter-menu nav nav-list collapse">
                 <li ><a href="AccountAlterID.html"><span class="fa fa-caret-right"></span> 按编号修改</a></li>
-                <li ><a href="AccountAlterName.html"><span class="fa fa-caret-right"></span> 按姓名修改</a></li>
+                <li ><a href="AccountAlterName.html"><span class="fa fa-caret-right"></span> 按用户名修改</a></li>
             </ul>
         </li>
         <li><a href="#" data-target=".query-menu" class="nav-header collapsed" data-toggle="collapse">
@@ -195,7 +195,7 @@
                         llans+='&nbsp';
                     return llans;
                 }
-                for ( var i = 0; i <res1.length;  i++) {
+                for ( var i = res1.length - 1; i >= 0;  i-- ) {
                     html = html + '操作详情：' + res1[i].data;
                     html = html + '<br>时间：' + res1[i].time + '</br>';
                     html = html + '<br>' + '</<br>';

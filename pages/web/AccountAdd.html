@@ -187,7 +187,7 @@
         <li>
             <ul class="alter-menu nav nav-list collapse">
                 <li ><a href="AccountAlterID.html"><span class="fa fa-caret-right"></span> 按编号修改</a></li>
-                <li ><a href="AccountAlterName.html"><span class="fa fa-caret-right"></span> 按姓名修改</a></li>
+                <li ><a href="AccountAlterName.html"><span class="fa fa-caret-right"></span> 按用户名修改</a></li>
             </ul>
         </li>
         <li><a href="#" data-target=".query-menu" class="nav-header collapsed" data-toggle="collapse">
@@ -238,7 +238,7 @@
                             <div class="form-group">
                                 <label>性别</label>
                                 <input type="text" value="" class="form-control"  id="user_sex" onblur="checkuser_sex(this)"
-                                       oninput = "value=value.replace(/[^[0,1]/g,'')" maxlength="1"  placeholder="格式：0或1"/>
+                                       oninput = "value=value.replace(/[^[01]/g,'')" maxlength="1"  placeholder="格式：0或1"/>
                                 <a color="red" id="user_sexMsg"></a>
                             </div>
                             <input type="hidden" value="222" id="condition">

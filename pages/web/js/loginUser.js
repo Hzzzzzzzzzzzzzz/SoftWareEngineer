@@ -19,7 +19,7 @@ $(document).ready(
                 url:"http://193.112.176.224:8080/Web_war/service",
                 async:true,
                 data:{
-                    "condition":"213",
+                    "condition":"111",
                     "insert_type":"1",
                     "userName":$("#username").val(),
                 },
@@ -32,7 +32,7 @@ $(document).ready(
                     var json = eval("("+ajaxObj.responseText+")");
                     if($("#password").val()==json.password){
                         $.cookie('u_id', json.user_id);
-                        $.cookie('u_name', json.userName);
+                        $.cookie('u_name', $("#username").val());
                         alert("登录成功！");
                         window.location.href="addEngineer.html";
                     }
